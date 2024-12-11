@@ -13,7 +13,17 @@ class PLCConnection:
             self.comm.IPAddress = self.ip_address
             self.comm.ProcessorSlot = self.processor_slot
             self.comm.Micro800 = self.is_micro800
-            print(f"Connection to PLC at {self.ip_address} opened.")
+
+            # try:
+            #     # Perform a test read to confirm the connection
+            #     response = self.comm.Read("DummyTag")
+            #     if response.Status == "Success":
+            #         print(f"Connection to PLC at {self.ip_address} opened successfully.")
+            #     else:
+            #         raise ConnectionError(f"Failed to connect to PLC at {self.ip_address}: {response.Status}")
+            # except Exception as e:
+            #     self.comm = None  # Reset comm on failure
+            #     raise ConnectionError(f"Connection error: {e}")
         else:
             print("Connection already established.")
 
@@ -36,3 +46,6 @@ class PLCConnection:
             raise ConnectionError("No active connection. Open the connection first.")
         ret = self.comm.Write(tag_name, value)
         return ret.Status
+
+    def is_connected(self):
+        return self.comm is not None

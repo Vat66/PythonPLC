@@ -21,8 +21,8 @@ cd PythonPLC
 Install dependencies and run the project:
 
 ```bash
-make install
-make run
+./scripts/install.sh
+./scripts/run.sh
 ```
 
 - The backend will run at http://localhost:5000

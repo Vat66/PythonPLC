@@ -1,11 +1,11 @@
 import { useState } from "react";
-import "./App.css";
 import ReadButton from "./componentz/ReadButton";
+import ConnectForm from "./componentz/connectForm";
 function App() {
   return (
-    <>
-      <ReadButton />
-    </>
+    <div className="flex items-center justify-center h-screen">
+      <ConnectForm />
+    </div>
   );
 }
 
