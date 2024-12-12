@@ -10,7 +10,7 @@ def discoverTags():
         comm.IPAddress = '192.168.100.103'
         tags = comm.GetTagList()
         print(tags)
-
+discoverTags()
 
 # with open('tag_list.txt', 'w') as f:
 #     for t in tags.Value:
@@ -28,4 +28,9 @@ def devices():
             print('')
 
 
-devices()
+
+def discover():
+    with PLC() as comm:
+        devices = comm.Discover()
+        return(devices)
+

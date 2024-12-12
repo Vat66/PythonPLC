@@ -1,18 +1,16 @@
 #!/bin/bash
 
-# Start Flask backend using pipenv
+# Start Flask backend using pipenv in the background
 echo "Starting Flask backend server..."
 cd server
-pipenv run python app.py &
+python app.py &
 BACKEND_PID=$!
 
-# Start React frontend (Vite)
+# Start React frontend (Vite) in the background
 echo "Starting React frontend (Vite)..."
 cd ../client
 npm run dev &
 FRONTEND_PID=$!
 
-# Wait for both processes
-echo "Frontend is running at http://localhost:5173"
-echo "Backend is running at http://localhost:5000"
+# Wait for both processes to finish
 wait $BACKEND_PID $FRONTEND_PID
